@@ -11,6 +11,7 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Navbar = () => {
   const { data: session } = useSession();
+  const profileImage = session?.user?.image;
   const [isMobileMenuOpen, setisMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setisProfileMenuOpen] = useState(false);
   const [providers, setProviders] = useState(null);
@@ -26,7 +27,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-blue-700 border-b border-blue-500">
+    <nav className="bg-green-600 border-b border-green-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-20 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -64,7 +65,7 @@ const Navbar = () => {
               <Image className="h-10 w-auto" src={logo} alt="PropertyPulse" />
 
               <span className="hidden md:block text-white text-2xl font-bold ml-2">
-                PropertyPulse
+                Venue Finder
               </span>
             </Link>
             {/* <!-- Desktop Menu Hidden below md screens --> */}
@@ -84,7 +85,7 @@ const Navbar = () => {
                     pathname === "/properties" ? "bg-black" : ""
                   } text-white  hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
                 >
-                  Properties
+                  Venues
                 </Link>
                 {session && (
                   <Link
@@ -93,7 +94,7 @@ const Navbar = () => {
                       pathname === "/properties/add" ? "bg-black" : ""
                     } text-white  hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
                   >
-                    Add Property
+                    Add Venue
                   </Link>
                 )}
               </div>
@@ -164,8 +165,10 @@ const Navbar = () => {
                     <span className="sr-only">Open user menu</span>
                     <Image
                       className="h-8 w-8 rounded-full"
-                      src={profileDefault}
+                      src={profileImage || profileDefault}
                       alt=""
+                      width={40}
+                      height={40}
                     />
                   </button>
                 </div>
@@ -187,6 +190,9 @@ const Navbar = () => {
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-0"
+                      onClick={() => {
+                        setisProfileMenuOpen(false);
+                      }}
                     >
                       Your Profile
                     </Link>
@@ -196,10 +202,17 @@ const Navbar = () => {
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-2"
+                      onClick={() => {
+                        setisProfileMenuOpen(false);
+                      }}
                     >
                       Saved Properties
                     </Link>
                     <button
+                      onClick={() => {
+                        setisProfileMenuOpen(false);
+                        signIn();
+                      }}
                       className="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       tabIndex="-1"

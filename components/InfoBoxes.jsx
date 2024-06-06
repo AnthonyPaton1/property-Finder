@@ -20,11 +20,11 @@ const InfoBoxes = () => {
           </InfoBox>
           <InfoBox
             heading="For Property owners"
-            backgroundColor="bg-blue-100"
+            backgroundColor="bg-green-100"
             buttonInfo={{
               text: "Add Property",
               link: "/properties/add",
-              backgroundColor: "bg-blue-500",
+              backgroundColor: "bg-green-500",
             }}
           >
             List your property to all prospective renters. Rent as an Airbnb or
