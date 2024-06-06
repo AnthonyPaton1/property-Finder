@@ -7,28 +7,28 @@ const InfoBoxes = () => {
       <div className="container-xl lg:container m-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 rounded-lg">
           <InfoBox
-            heading="For Renters"
+            heading="Visitors enter here"
             backgroundColor="bg-grey-100"
             buttonInfo={{
-              text: "Browse Properties",
+              text: "Browse Venues",
               link: "/properties",
               backgroundColor: "bg-black",
             }}
           >
-            Find your dream Rental property. Bookmark properties and contact
-            owners
+            Find a local inclusive environment to meet friends and family, and
+            most importantly just be yourself
           </InfoBox>
           <InfoBox
-            heading="For Property owners"
+            heading="For Venue managers"
             backgroundColor="bg-green-100"
             buttonInfo={{
-              text: "Add Property",
+              text: "Add Venue",
               link: "/properties/add",
               backgroundColor: "bg-green-500",
             }}
           >
-            List your property to all prospective renters. Rent as an Airbnb or
-            long term
+            List and advertise your venue here. Edit your profile, update your
+            images and advertise upcoming events
           </InfoBox>
         </div>
       </div>
